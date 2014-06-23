@@ -17,9 +17,7 @@ function relative(dirname) {
 }
 
 function* readFile(path) {
-  var entry = yield function (callback) {
-    fs.readEntry(path, callback);
-  };
+  var entry = yield fs.readEntry(path);
   var repo = fs.findRepo(entry.root);
   return yield repo.loadAs("text", entry.hash);
 }
